@@ -12,9 +12,11 @@ class TodosController < ApplicationController
 	def update
 		todo = Todo.find_by id: params[:todo_id]
 
-		todo.update todo_params
-
-		render json: todo, status: :ok
+		if todo.update todo_params
+			render json: todo, status: :ok
+		else
+			head :unprocessable_entity
+		end
 	end
 
 	private
