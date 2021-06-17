@@ -3,7 +3,7 @@ class TodosController < ApplicationController
 		todo = Todo.new todo_params
 
 		if todo.save
-			head :created
+			render json: todo , status: :created
 		else
 			head :unprocessable_entity
 		end

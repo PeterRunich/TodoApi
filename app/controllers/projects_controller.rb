@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
 		project = Project.new project_params
 
 		if project.save
-			head :created
+			render json: project , status: :created
 		else
 			head :unprocessable_entity
 		end
